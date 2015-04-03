@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modal Dialog Demo</title>
+    <link rel="stylesheet" href="">
+</head>
+<style type="text/css">
+.body {
+    color: #333;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    background-color: #000;
+    opacity: .8;
+}
+
+.modal-dialog {
+    margin: 10% auto;
+    width: 40%;
+    background-color: #FFF;
+    opacity: 1;
+    color: #333;
+}
+
+.btn-close {
+    float: right;
+}
+</style>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<body>
+    <div>萌萌哒。。</div>
+    <button onclick="showMask()">显示模态框</button>
+    <div id="dialog" class="modal">
+        <div class="modal-dialog">
+            <header id="header" class="">
+                <button class="btn-close" onclick="hiddenMask()">关闭</button>
+                <h1>test</h1>
+            </header>
+            <section>
+                <p>你大爷的</p>
+            </section>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+function showMask() {
+    $('#dialog').show();
+}
+
+function hiddenMask() {
+    $('.modal').hide();
+}
+</script>
+
+</html>
