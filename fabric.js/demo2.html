@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>控制图片多层叠加</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div id="canvas-container">
+        <canvas id="c" style="height: 600;width: 600;">
+            该浏览器不支持Canvas
+        </canvas>
+    </div>
+    <div>
+        <button id="btn-add-frame" class="btn btn-primary">添加边框</button>
+        <button id="btn-remove-frame" class="btn btn-danger">去除边框</button>
+        <button id="btn-save-img" class="btn btn-default">保存/预览图像</button>
+    </div>
+    <div class="img-list-hide">
+        <img id="icon-frame" src="img/frame.png" height="600" width="600">    
+        <img id="icon-wechat" src="img/wechat.png" height="175" width="175" alt="">
+    </div>
+</body>
+<script>
+(function($) {
+
+   var min = function(a,b){
+        return a > b ?  b : a;
+   };
+
+   var canvas = new fabric.StaticCanvas('c');
+
+   console.log($('#icon-frame').height());
+   //
+   var icon_frame = new fabric.Image($('#icon-frame')[0], {
+        left:0,
+        top:0,
+        scaleX:canvas.getWidth()/$('#icon-frame').width(),
+        scaleY:canvas.getHeight()/$('#icon-frame').height()
+   });
+
+   var icon_wechat = new fabric.Image($('#icon-wechat')[0],{
+        left:0,
+        right:0,
+        scaleX: canvas.getWidth()/$('#icon-wechat').width(),
+        scaleY: canvas.getHeight()/$('#icon-wechat').height()
+   });
+
+   canvas.add(icon_wechat);
+   
+
+   $('#btn-add-frame').on('click', function(){
+        canvas.add(icon_frame);
+   });
+
+   $('#btn-remove-frame').on('click',function(){
+        canvas.remove(icon_frame);
+   });
+
+   $('#btn-save-img').on('click',function(){
+        console.log(canvas.toDataURL());
+        location = canvas.toDataURL();
+   });
+})(jQuery);
+</script>
+
+</html>

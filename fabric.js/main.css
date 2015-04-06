@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+canvas {
+    width: 300;
+    height: 300;
+}
+
+#canvas-container {
+    text-align: center;
+    width:50%;
+    height:50%;
+    margin:20% auto;
+}
+
+.img-list-hide {
+    display: none;
+}
+
+
+#c{
+    width:600px;
+    height:600px;
+}

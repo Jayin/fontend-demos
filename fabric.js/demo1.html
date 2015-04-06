@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>图片层</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div id="canvas-container">
+        <canvas id="c">
+            该浏览器不支持Canvas
+        </canvas>
+    </div>
+    <div class="img-list-hide">
+        <img id="icon-wechat" src="img/wechat.png" height="175" width="175">
+    </div>
+</body>
+<script>
+(function($) {
+    // create a wrapper around native canvas element (with id="c")
+    var canvas = new fabric.StaticCanvas('c');
+
+    // create a rectangle object
+    var rect = new fabric.Rect({
+        left: 50,
+        top: 50,
+        fill: 'red',
+        width: 40,
+        height: 40,
+
+    });
+    rect.set({
+        strokeWidth: 5,
+        stroke: 'rgba(100,200,200,0.5)',
+        selectable: false
+    });
+
+    var circle = new fabric.Circle({
+        radius: 20,
+        fill: 'green',
+        left: 100,
+        top: 100
+    });
+    var triangle = new fabric.Triangle({
+        width: 20,
+        height: 30,
+        fill: 'blue',
+        left: 50,
+        top: 50
+    });
+
+    //simple animate
+    rect.animate('angle', 45, {
+        onChange: canvas.renderAll.bind(canvas),
+        duration: 2000,
+        easing: fabric.util.ease.easeOutBounce
+    });
+
+
+    canvas.add(rect).add(circle).add(triangle);
+
+    // the text
+    var text = new fabric.Text('hello world', {
+        left: 100,
+        top: 100
+    });
+    canvas.add(text);
+
+    //  add img
+    var wechatIcon = new fabric.Image($('#icon-wechat')[0], {
+        left: 40,
+        top: 40,
+        width: 60,
+        height: 60
+    });
+
+    canvas.add(wechatIcon);
+    console.log(canvas.toJSON());
+    console.log(canvas.toDataURL('png'));
+})(jQuery);
+</script>
+
+</html>
