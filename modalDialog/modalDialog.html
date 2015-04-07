@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Modal Dialog Demo</title>
     <link rel="stylesheet" href="">
 </head>
@@ -26,13 +27,24 @@
 
 .modal-dialog {
     margin: 10% auto;
-    width: 40%;
+    width: 70%;
     background-color: #ff0082;
     color: #FFFFFF;
+    padding: 6px;
+    border-radius: 10px;
+    font-weight: 2;
 }
 
 .btn-close {
     float: right;
+}
+
+.modal-btn-close {
+    text-align: right;
+}
+
+.modal-content {
+    text-align: center;
 }
 </style>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -42,23 +54,29 @@
     <button onclick="showMask()">显示模态框</button>
     <div id="dialog" class="modal">
         <div class="modal-dialog">
-            <header id="header" class="">
-                <button class="btn-close" onclick="hiddenMask()">关闭</button>
-                <h1>test</h1>
-            </header>
-            <section>
-                <p>你大爷的</p>
-            </section>
+            <div class="modal-content">
+                <p>世界只有一个，地球只有一个</p>
+                <p>人类有N中，你是哪一种</p>
+                <p><strong>我们是荧光人类</strong></p>
+                <p>赶紧拿起手机拍照吧，或者从相册中</p>
+                <p>选取一张，点击你喜欢的模板、道具</p>
+                <p>、口号从现在开始，你就是荧光人类的主角</p>
+                <p>，带上你的小伙伴一起疯狂夜跑吧</p>
+            </div>
+            <div class="modal-btn-close">
+                <img onclick="hiddenMask()" src="img/img_close.png" height="28" width="30" />
+            </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
+
 function showMask() {
     $('#dialog').show();
 }
 
 function hiddenMask() {
-    $('.modal').hide();
+    $('#dialog').hide();
 }
 </script>
 
