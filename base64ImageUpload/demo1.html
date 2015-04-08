@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Base64 upload</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="./js/jquery/jquery.js"></script>
+<style type="text/css">
+*{
+    font-size: 16px;
+}
+</style>
+</head>
+
+
+<body>
+    <img id="img-google" src="./img/google.png" height="216" width="711">
+    <img id="img-google-base64" height="216" width="711">
+    <img id="img-google-base64-tmp" height="216" width="711">
+    <button id="btn-upload">上传base64图片</button>
+    <script type="text/javascript">
+    (function($) {
+        $.get('./img/img.json', function(data) {
+            console.log(data.img);
+
+            $('#img-google-base64').attr('src', data.img);
+        }, 'json');
+
+        $.get('./img/tmp.json', function(data) {
+            console.log(data.img);
+
+            $('#img-google-base64-tmp').attr('src', data.img);
+        }, 'json');
+
+
+        $('#btn-upload').on('click', function() {
+            $.post('/upload', {
+                'img': $('#img-google-base64').attr('src')
+            }, function(data) {
+                alert(data.msg);
+            });
+        });
+    })(jQuery);
+    </script>
+</body>
+
+</html>
