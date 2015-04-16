@@ -12,8 +12,11 @@ app.get '/', (req, res)->
     res.send "hello world"
 
 
+app.get '/upload', (req, res)->
+    res.send('upload file api')
+
 app.post '/upload', (req, res)->
-    console.log req.body.img
+    console.log req.body.imgData
 
     fs = require 'fs'
     fs.writeFile __dirname + '/dist/img/tmp.json','{"img":"'+req.body.img+'"}',(err)->
@@ -26,7 +29,6 @@ app.post '/upload', (req, res)->
                 'msg':'OK'
             }
 
-
 app.listen 3000, ()->
-    console.log 'express app is running'
+    console.log 'express app is listening port '+3000
 
