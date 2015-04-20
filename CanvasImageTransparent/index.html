@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Canvas 把图片空白处变透明</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<style type="text/css">
+body {
+    background-color: black;
+    color: white;
+    font-size:
+}
+</style>
+
+<body>
+    <div> <img id="avatar" src="2.jpg" width="467" height="467" />
+    </div>
+    <div>处理后</div>
+
+    <div>
+        <img id="result" src="">
+    </div>
+    <canvas id="c" width="467" height="467" style="display: none;">
+    </canvas>
+</body>
+
+
+<script type="text/javascript">
+/**
+ * 给定一个图片元素，把空白处变为透明，返回一个新的图片元素(标签)
+ * @param  {[type]} img [description]
+ * @return {[type]}     [description]
+ */
+var white2trasparent = function(img,range){
+    var range = range || 5;
+
+    var canvas = document.createElement('canvas');
+    canvas.height = img.height;
+    canvas.width = img.width;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < imgData.data.length; i += 4) {
+        var dt = Math.abs(imgData.data[i]-255) + Math.abs(imgData.data[i+1]-255) + Math.abs(imgData.data[i+2]-255);
+        if (dt<5) {
+            imgData.data[i + 3] = 0
+        }
+    }
+
+    ctx.putImageData(imgData,0,0);
+    var newImg = new Image();
+    newImg.src = canvas.toDataURL();
+    return  newImg;
+};
+
+
+
+var canvas = document.getElementById('c');
+var ctx = canvas.getContext('2d');
+
+var img = document.getElementById('avatar');
+
+img.onload = function() {
+    document.getElementById('result').src = white2trasparent(img).src;
+};
+
+
+
+
+</script>
+
+</html>
