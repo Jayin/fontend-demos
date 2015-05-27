@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>audio切换播放</title>
+    <link rel="stylesheet" href="../bower /bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <style type="text/css">
+    .container {
+        margin: 50px;
+    }
+    </style>
+    <div class="container">
+        <p>测试audio</p>
+        <button id="btn-bg">点击播放背景音乐</button>
+        <button id="btn-create">播放create音乐</button>
+        <button id="btn-click">播放click音乐</button>
+    </div>
+    <audio id="audio-bg" src="./audio/bg.mp3" loop autoplay="autoplay"></audio>
+    <audio id="audio-click" src="./audio/click.mp3"></audio>
+    <audio id="audio-create" src="./audio/create.mp3"></audio>
+</body>
+<script>
+;
+(function($) {
+    var audio_bg = $('#audio-bg')[0];
+
+    $('#btn-bg').on('click', function(evt,extra) {
+        console.log($('#audio-bg')[0]);
+        if(extra){
+            console.log(extra);
+            alert(extra);
+        }
+        audio_bg.load();
+        audio_bg.play();
+    });
+
+    // $('#btn-bg').trigger('click','fuck!');
+    // 
+    $('#')
+      $('#audio-bg')[0].load();
+    $('#audio-bg')[0].play();
+
+    $('#btn-create').on('click', function() {
+
+    });
+
+    $('#btn-click').on('click', function() {
+
+    });
+})(jQuery)
+</script>
+
+</html>
