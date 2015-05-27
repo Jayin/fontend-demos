@@ -1,0 +1,26 @@
+h1 {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: lternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+    opacity: 0;
+  }
+
+  75% {
+      font-size: 300%;
+      margin-left: 75%;
+      width: 150%;
+}
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+    opacity: 1;
+  }
+}
