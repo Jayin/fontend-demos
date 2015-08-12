@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>check box test</title>
+</head>
+<script src="js/jquery.min.js" ></script>
+<style type="text/css" media="screen">
+.container {
+    margin: 60px auto;
+    width: 960px;
+}
+</style>
+
+<body>
+    <div class="container">
+        <input type="checkbox" name="1" value="jack" checked="checked">jack</input>
+        <input type="checkbox" name="1" value="2" checked="checked">2</input>
+        <input type="checkbox" name="1" value="ton" checked="checked">ton</input>
+        <button id="btn-add">添加</button>
+          <button id="btn-remove">删除</button>
+    </div>
+
+<script>
+    (function($){
+        $('[name=1]').on('click',function(){
+            console.log($(this))
+            console.log($(this).value)
+            console.log($(this).selected)
+        })
+
+        $('#btn-add').on('click', function(){
+            $('input[name=1]').attr('checked','true')
+        })
+
+        $('#btn-remove').on('click', function(){
+            $('input[name=1]').removeAttr('checked')
+        })
+    })(jQuery);
+</script>
+</body>
+
+</html>

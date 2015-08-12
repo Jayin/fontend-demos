@@ -1,0 +1,45 @@
+img {
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-name: slidein;
+            animation-name: slidein;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+            animation-direction: alternate;
+    position: absolute;
+    top: 40%;
+    left:30%;
+    display: block;
+    width:50%;
+}
+
+@-webkit-keyframes slidein {
+    from {
+      
+        width:50%;
+        top: 40%;
+        left:30%;
+    }
+    to {
+      
+        width:0%;
+        top: 60%;
+        left:40%;
+    }
+}
+
+@keyframes slidein {
+    from {
+      
+        width:50%;
+        top: 40%;
+        left:30%;
+    }
+    to {
+      
+        width:0%;
+        top: 60%;
+        left:40%;
+    }
+}
