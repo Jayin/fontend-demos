@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DeviceMotionEvent</title>
+</head>
+
+<body>
+    <h2>请摇一摇</h2>
+    <div class="output">
+
+    </div>
+    <script src="shake.js"></script>
+    <script type="text/javascript">
+        var output = document.querySelector('.output');
+        window.addEventListener('shake', function(evt) {
+            console.log(evt)
+            alert('shake!')
+        }, false);
+
+        var myShakeEvent = new Shake({
+            threshold: 15, // optional shake strength threshold
+            timeout: 1000 // optional, determines the frequency of event generation
+        });
+        myShakeEvent.start();
+    </script>
+</body>
+
+</html>
