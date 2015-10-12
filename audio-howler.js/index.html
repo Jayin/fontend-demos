@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Audio-howler.js Demo</title>
+    </head>
+    <body>
+        <button id="btn-start" type="button" name="button">start</button>
+        <button id="btn-pause" type="button" name="button">pause</button>
+        <button  id="btn-stop"type="button" name="button">stop</button>
+
+    <script type="text/javascript" src="./howler.js"></script>
+    <script type="text/javascript">
+    var bgMusic = new Howl({
+            src: ['./music/bg.mp3']
+            ,onload: function(a,b){
+                console.log('onload:')
+                console.log(a,b)
+                console.log(bgMusic._duration)
+            }
+            ,onplay: function(id){
+                console.log('onplay:')
+                console.log(id)
+                console.log(bgMusic._duration)
+            }
+    });
+    document.getElementById('btn-start').addEventListener('click', function(){
+        bgMusic.play();
+    })
+    document.getElementById('btn-pause').addEventListener('click', function(){
+        bgMusic.pause();
+    })
+    document.getElementById('btn-stop').addEventListener('click', function(){
+        bgMusic.stop();
+    })
+    </script>
+    </body>
+</html>
