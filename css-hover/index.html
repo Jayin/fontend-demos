@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+
+<body>
+    <style>
+        .jy-item {
+            width: 33%;
+            display: inline-block;
+            height: 33vw;
+            text-align: center;
+            position: relative;
+            animation-name: jy-fadeInUp;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .jy-item1 {
+            background-image: url(http://ww4.sinaimg.cn/large/6ee3e8b3jw1f2e2uq4xflj20bo0bowf4.jpg)
+        }
+        .jy-item1:hover {
+            background-image: url(http://ww3.sinaimg.cn/large/6ee3e8b3jw1f2e2v2gn3cj20bo0bo3z7.jpg);
+        }
+        .jy-item2 {
+            background-color: blue;
+        }
+        .jy-item2:hover {
+            background-color: red;
+        }
+        .jy-item3 {
+            background-color: blue;
+        }
+        .jy-item3:hover {
+            background-color: red;
+        }
+        .jy-item-wrapper {
+            position: absolute;
+            top: 33%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: white;
+            padding: 0 2rem;
+        }
+        .jy-c-end2end-box_learn {
+            text-decoration: underline;
+            color: white;
+        }
+        @keyframes jy-fadeInUp {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: -100px;
+            }
+        }
+        @keyframes jy-fadeInDown {
+            from {
+                margin-top: -100px;
+            }
+            to {
+                margin-top: 0px;
+            }
+        }
+        @keyframes jy-fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes jy-fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        .jy-fadeInUp {
+            animation-name: jy-fadeInUp;
+        }
+        .jy-fadeInDown {
+            animation-name: jy-fadeInDown;
+        }
+        .jy-fadeIn {
+            animation-name: jy-fadeIn;
+        }
+        .jy-animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        .jy-animated.infinite {
+            animation-iteration-count: infinite;
+        }
+        .jy-animated.hinge {
+            animation-duration: 2s;
+        }
+        .jy-animated.flipOutX,
+        .jy-animated.flipOutY,
+        .jy-animated.bounceIn,
+        .jy-animated.bounceOut {
+            animation-duration: .25s;
+        }
+    </style>
+    <div class="jy-item jy-item1">
+        <div class="jy-item-wrapper jy-animated" id='1'>
+            <span>
+                    <img class="jy-c-case-study_image" src="http://ww2.sinaimg.cn/large/6ee3e8b3jw1f2evbqo921j2046046dfq.jpg" alt="">
+             </span>
+            <div class="jy-c-end2end-box_description animated" style="opacity: 0;">
+                <h3 class="jy-o-h3 c-end2end-box_title"></h3>
+                <p class="jy-c-end2end-box_subtitle">Achieving lift in acquisition and spend through a brand new online shopping experience</p>
+                <a href="#" class="jy-c-end2end-box_learn">Learn more</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var items = document.getElementsByClassName('jy-item');
+        var img_wrappers = document.getElementsByClassName('jy-item-wrapper');
+        var description = document.getElementsByClassName('jy-c-end2end-box_description');
+        var mouse_over_lock = {};
+        for(var index=0; index<items.length;index++){
+            items[index].addEventListener('mouseover', function(index,event){
+                if(mouse_over_lock[index]){
+                    return
+                }
+                console.log('over:')
+                console.log(mouse_over_lock[index])
+                mouse_over_lock[index] = true;
+                img_wrappers[index].className = "jy-item-wrapper jy-animated jy-fadeInUp"
+                description[index].className = "jy-c-end2end-box_description jy-animated jy-fadeIn"
+            }.bind(this, index))
+            
+            items[index].addEventListener('mouseleave', function(index,event){
+                    console.log('leave:')
+                mouse_over_lock[index] = false;
+                img_wrappers[index].className = "jy-item-wrapper jy-animated jy-fadeInDown"
+                description[index].className = "jy-c-end2end-box_description jy-animated jy-fadeOut"
+            }.bind(this, index))
+        }
+    </script>
+</body>
+
+</html>
