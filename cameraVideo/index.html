@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>video+camera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="//cdn.bootcss.com/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+</head>
+<style>
+    
+    main {
+        text-align: center;
+        margin: 15% auto;
+    }
+</style>
+
+<body>
+    <main>
+        <p>演示：如何调用摄像头并显示到video</p>
+        <p>参考项目: https://github.com/andyvr/picEdit</p>
+        <!--必须要autoplay🐔-->
+        <video autoplay width="400px" height="400px">
+
+        </video>
+    </main>
+</body>
+<script>
+    (function(){
+            var _this = this;
+            var getUserMedia;
+			var browserUserMedia = navigator.webkitGetUserMedia	||	// WebKit
+									 navigator.mozGetUserMedia	||	// Mozilla FireFox
+									 navigator.getUserMedia;			// 2013...
+			if (!browserUserMedia) return this.set_messagebox("Sorry, your browser doesn't support WebRTC!");
+			
+			getUserMedia = browserUserMedia.bind(navigator);
+			getUserMedia({
+					audio: false,
+					video: true
+				},
+				function(stream) {
+					var videoElement = $("video")[0];
+					videoElement.src = URL.createObjectURL(stream);
+					//resize viewport
+					videoElement.onloadedmetadata = function() {
+						
+                        
+					};
+				},
+				function(err) {
+					return alert("No video source detected! Please allow camera access!");
+				}
+			);
+            })($);
+</script>
+
+</html>
