@@ -4,7 +4,7 @@
 // Distance = R*Arccos(C)*Pi/180
 //http://blog.csdn.net/yl2isoft/article/details/16367901
 
-//计算2个经纬度之间的距离 Longitude:经度 Latitude:纬度
+//计算2个经纬度之间的距离(计算结果单位：米) Longitude:经度 Latitude:纬度 
 function calDistance(targetLongitude, targetLatitude, currentLongitude, currentLatitude){
     var EARTH_RADIUS =  6371*1000 //地球平均半径为6371*1000米
     var radius = function(d){
